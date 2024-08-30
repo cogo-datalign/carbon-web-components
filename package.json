@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "lerna run build --stream --prefix",
+    "build-pack": "webpack",
     "ci-check": "npm run format:diff && yarn lint:license && yarn lint && yarn lint:styles",
     "clean": "lerna run clean && lerna clean --yes && rimraf node_modules",
     "doctoc": "doctoc --title '## Table of Contents' docs",
@@ -26,7 +27,8 @@
     "test": "yarn test:unit && yarn test:a11y",
     "test:a11y": "yarn lerna run --stream --prefix test:a11y",
     "test:unit": "cross-env BABEL_ENV=test jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev-server": "webpack-dev-server"
   },
   "devDependencies": {
     "@actions/core": "^1.2.0",
@@ -50,6 +52,7 @@
     "chalk": "^4.1.1",
     "commander": "^4.1.0",
     "cross-env": "^7.0.0",
+    "css-loader": "^7.1.2",
     "doctoc": "^2.0.0",
     "enzyme-to-json": "^3.3.5",
     "eslint": "^8.53.0",
@@ -69,10 +72,15 @@
     "prettier": "^2.7.1",
     "react": "16.14.0",
     "rimraf": "^3.0.0",
-    "sass": "^1.19.0",
+    "sass": "^1.77.8",
+    "sass-loader": "^16.0.1",
+    "style-loader": "^4.0.0",
     "stylelint": "^15.11.0",
     "stylelint-config-carbon": "^1.16.0",
-    "through2": "^3.0.0"
+    "through2": "^3.0.0",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3"
